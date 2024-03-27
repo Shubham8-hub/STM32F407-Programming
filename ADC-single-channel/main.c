@@ -137,15 +137,6 @@ uint16_t ADC_GetVal (void)
 	return ADC1->DR;  // Read the Data Register
 }
 
-void ADC_Disable (void)
-{
-	/************** STEPS TO FOLLOW *****************
-	1. Disable the ADC by Clearing ADON bit in CR2
-	************************************************/	
-	ADC1->CR2 &= ~(1<<0);  // Disable ADC
-}
-
-
 uint16_t ADC_VAL[2] = {0,0};
 
 
@@ -163,11 +154,6 @@ int main ()
 		ADC_Start (1);
 		ADC_WaitForConv ();
 		ADC_VAL[0] = ADC_GetVal();
-		
-		// Channel 2
-//		ADC_Start (4);
-//		ADC_WaitForConv ();
-//		ADC_VAL[1] = ADC_GetVal();
 	}
 	
 }

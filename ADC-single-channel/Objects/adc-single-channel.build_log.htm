@@ -17,7 +17,7 @@ Library Manager: ArmAr.exe V6.21
 Hex Converter:   FromElf.exe V6.21
 CPU DLL:         SARMCM3.DLL V5.39.0.0
 Dialog DLL:      DCM.DLL V1.17.5.0
-Target DLL:      UL2CM3.DLL V1.164.9.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V3.2.0.0
 Dialog DLL:      TCM.DLL V1.56.4.0
  
 <h2>Project:</h2>
@@ -27,7 +27,6 @@ Project File Date:  03/19/2024
 <h2>Output:</h2>
 *** Using Compiler 'V6.21', folder: 'C:\Keil_v5\ARM\ARMCLANG\Bin'
 Build target 'Target 1'
-compiling RCCconfig.c...
 main.c(72): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
    72 |         ADC1->CR1 &= ~(1<<24);   // 12 bit RES
       |                   ~~ ^~~~~~~~
@@ -60,31 +59,22 @@ main.c(135): note: declare 'static' if the function is not intended to be used o
   135 | uint16_t ADC_GetVal (void)
       | ^
       | static 
-main.c(145): warning: implicit conversion changes signedness: 'int' to 'uint32_t' (aka 'unsigned int') [-Wsign-conversion]
-  145 |         ADC1->CR2 &= ~(1<<0);  // Disable ADC
-      |                   ~~ ^~~~~~~
-main.c(140): warning: no previous prototype for function 'ADC_Disable' [-Wmissing-prototypes]
-  140 | void ADC_Disable (void)
-      |      ^
-main.c(140): note: declare 'static' if the function is not intended to be used outside of this translation unit
-  140 | void ADC_Disable (void)
-      | ^
-      | static 
-main.c(149): warning: no previous extern declaration for non-static variable 'ADC_VAL' [-Wmissing-variable-declarations]
-  149 | uint16_t ADC_VAL[2] = {0,0};
+main.c(140): warning: no previous extern declaration for non-static variable 'ADC_VAL' [-Wmissing-variable-declarations]
+  140 | uint16_t ADC_VAL[2] = {0,0};
       |          ^
-main.c(149): note: declare 'static' if the variable is not intended to be used outside of this translation unit
-  149 | uint16_t ADC_VAL[2] = {0,0};
+main.c(140): note: declare 'static' if the variable is not intended to be used outside of this translation unit
+  140 | uint16_t ADC_VAL[2] = {0,0};
       | ^
-main.c(153): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
-  153 | int main ()
+main.c(144): warning: a function declaration without a prototype is deprecated in all versions of C [-Wstrict-prototypes]
+  144 | int main ()
       |          ^
       |           void
-12 warnings generated.
+10 warnings generated.
 compiling main.c...
 linking...
 Program Size: Code=996 RO-data=408 RW-data=0 ZI-data=1640  
-".\Objects\adc-single-channel.axf" - 0 Error(s), 12 Warning(s).
+FromELF: creating hex file...
+".\Objects\adc-single-channel.axf" - 0 Error(s), 10 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -122,14 +112,14 @@ Package Vendor: Keil
 
    * Component: Keil::Device:STM32Cube Framework:Classic@1.8.1
       Source file:   MDK/Templates/Src/stm32f4xx_hal_msp.c
-      Include file:  CMSIS/Driver/Config/RTE_Device.h
+      Include file:  MDK/Templates/Inc/stm32f4xx_hal_conf.h
+      Source file:   MDK/Templates/Src/main.c
+      Include file:  MDK/Templates_LL/Inc/main.h
+      Include file:  MDK/Templates/Inc/stm32f4xx_it.h
       Source file:   MDK/Templates/Src/stm32f4xx_it.c
       Include file:  MDK/Templates/Inc/main.h
-      Include file:  MDK/Templates/Inc/stm32f4xx_it.h
-      Source file:   MDK/Templates/Src/main.c
-      Include file:  MDK/Templates/Inc/stm32f4xx_hal_conf.h
+      Include file:  CMSIS/Driver/Config/RTE_Device.h
       Source file:   MDK/Templates_LL/Src/main.c
-      Include file:  MDK/Templates_LL/Inc/main.h
 
    * Component: Keil::Device:STM32Cube HAL:Common@1.8.1
       Include file:  Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h
@@ -142,18 +132,18 @@ Package Vendor: Keil
       Source file:   Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_gpio.c
 
    * Component: Keil::Device:STM32Cube HAL:PWR@1.8.1
-      Source file:   Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c
       Source file:   Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr_ex.c
+      Source file:   Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_pwr.c
 
    * Component: Keil::Device:STM32Cube HAL:RCC@1.8.1
       Source file:   Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc.c
       Source file:   Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_rcc_ex.c
 
    * Component: Keil::Device:Startup@2.6.3
-      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
-      Source file:   MDK/Device/Source/ARM/STM32F40xxx_41xxx_OPT.s
       Source file:   MDK/Device/Source/ARM/STM32F4xx_OTP.s
       Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/arm/startup_stm32f407xx.s
+      Source file:   MDK/Device/Source/ARM/STM32F40xxx_41xxx_OPT.s
+      Include file:  Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h
       Source file:   Drivers/CMSIS/Device/ST/STM32F4xx/Source/Templates/system_stm32f4xx.c
 Build Time Elapsed:  00:00:01
 </pre>
