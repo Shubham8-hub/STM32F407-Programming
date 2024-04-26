@@ -1,0 +1,9 @@
+In this folder there are 4 files:-
+1) stm32_esp32
+2) stm32_esp32_2
+3) uart_read
+4) uart_read_aws
+
+The 2nd and 4th file is containing the updated code to send data from stm32 to esp32. 
+
+The remaining files consist of correct code but need to be checked
